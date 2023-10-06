@@ -1,11 +1,13 @@
 name: Release Npm
 
 on:
-  workflow_run:
+  workflow_dispatch:
     branches: [ main ]
-    workflows: ["CI build"]
-    types:
-      - completed
+  # workflow_run:
+  #   branches: [ main ]
+  #   workflows: ["Release Npm"]
+  #   types:
+  #     - completed
 
 jobs:
   release:
