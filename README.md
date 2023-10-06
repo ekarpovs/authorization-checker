@@ -1,6 +1,9 @@
-## Authorization via ACL Package
+## Authorization Checker
 
-A npm package for users authorization via Access Control List for Node.js projects with the auth-session.
+A npm package that provides access control authorized routers for Node.js projects.  
+The package is dedicated to be used with the @ekarpovs/authorization-repo-<database> packages. 
+Supports ACL - Access Control List and RBAC - Role Based Access Control methods. 
+Only authorization-repo-mongo is implemented at present.  
 
 <p>
   <a href="https://www.npmjs.com/package/@ekarpovs/authorization-checker" target="_blank">
