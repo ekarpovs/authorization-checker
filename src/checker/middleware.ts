@@ -1,15 +1,14 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import { getPermissions } from './service';
 
-export const initAuthorization = ({ rulesRepo }, { getUserData }) => {
+export const initAuthorization = ({ rulesRepo}) => {
   const isAuthorized = (permission: string, resource?: string) => {
-    return async (req: Request, res: Response, next: NextFunction) => {
-      const user = await getUserData(req.body.userId);
-      if (!user) {
-        res.sendStatus(404);
-      }
-      if (await permitted(user.role, permission, resource)) {
-        return next();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return async (req: any, res: Response, next: NextFunction) => {
+      if (req.session.passport && req.session.passport.user.role) {
+        if (await permitted(req.session.passport.user.role, permission, resource)) {
+          return next();
+        }
       }
       res.sendStatus(403);
     };
