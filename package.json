@@ -1,6 +1,6 @@
 {
   "name": "@ekarpovs/authorization-checker",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "A base npm package for use in my Node.js projects.",
   "exports": {
     ".": {
@@ -27,9 +27,10 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "test": "jest --detectOpenHandles --coverage --verbose",
-    "rename": "./node_modules/move-file-cli/cli.js README.md gitREADME.md",
     "prepack": "npm run build",
-    "pack:local": "npm run rename&& npm run build && npm pack",
+    "rename": "./node_modules/move-file-cli/cli.js README.md gitREADME.md",
+    "rename:back": "./node_modules/move-file-cli/cli.js gitREADME.md README.md",
+    "pack:local": "npm run rename&& npm run build && npm pack && npm run rename:back",
     "prepare": "husky install",
     "semantic-release": "semantic-release --branches main",
     "commit": "git-cz"
@@ -87,7 +88,6 @@
     }
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.5.4"
+    "express": "^4.18.2"
   }
 }
